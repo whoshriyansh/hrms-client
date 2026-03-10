@@ -1,18 +1,19 @@
 export const apiEndpoints = {
   user: {
-    getUser: "/api/user/get",
-    createUser: "/api/user/create",
-    updateUser: "/api/user/update",
-    deleteUser: "/api/user/delete",
+    getAll: "/api/users",
+    getById: (id: string) => `/api/users/${id}`,
+    create: "/api/users",
+    update: (id: string) => `/api/users/${id}`,
+    delete: (id: string) => `/api/users/${id}`,
   },
   auth: {
     login: "/api/auth/login",
-    logout: "/api/auth/logout",
   },
   attendance: {
-    getAttendance: "/api/attendance/get",
-    createAttendance: "/api/attendance/create",
-    updateAttendance: "/api/attendance/update",
-    deleteAttendance: "/api/attendance/delete",
+    getAll: "/api/attendance",
+    getByUserId: (id: string) => `/api/attendance/user/${id}`,
+    create: "/api/attendance",
+    update: (id: string) => `/api/attendance/${id}`,
+    delete: (id: string) => `/api/attendance/${id}`,
   },
 };

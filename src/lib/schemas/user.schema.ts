@@ -1,13 +1,21 @@
 import z from "zod";
 
+export const DEPARTMENTS = [
+  "HR",
+  "Engineering",
+  "Sales",
+  "Marketing",
+  "Finance",
+  "Support",
+] as const;
+export type Department = (typeof DEPARTMENTS)[number];
+
 export const CreateUserRequestSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters long"),
   email: z.string().email("Invalid email address"),
-  //Department should be an enum
-  department: z.enum(["HR", "Engineering", "Sales", "Marketing"], {
-    errorMap: () => ({
-      message: "Department must be one of HR, Engineering, Sales, Marketing",
-    }),
+  department: z.enum(DEPARTMENTS, {
+    message:
+      "Department must be one of HR, Engineering, Sales, Marketing, Finance, Support",
   }),
 });
 
@@ -36,7 +44,7 @@ export const CreateUserResponseSchema = z.object({
       fullName: z.string(),
       email: z.string().email(),
       employeeId: z.string(),
-      department: z.enum(["HR", "Engineering", "Sales", "Marketing"]),
+      department: z.enum(DEPARTMENTS),
       role: z.enum(["admin", "employee"]),
       _id: z.string(),
       createdAt: z.string(),
@@ -94,7 +102,7 @@ export const GetAllUsersResponseSchema = z.object({
         fullName: z.string(),
         email: z.string().email(),
         employeeId: z.string(),
-        department: z.enum(["HR", "Engineering", "Sales", "Marketing"]),
+        department: z.enum(DEPARTMENTS),
         role: z.enum(["admin", "employee"]),
         createdAt: z.string(),
         updatedAt: z.string(),
@@ -136,7 +144,7 @@ export const GetSingleUserResponseSchema = z.object({
     fullName: z.string(),
     email: z.string().email(),
     employeeId: z.string(),
-    department: z.enum(["HR", "Engineering", "Sales", "Marketing"]),
+    department: z.enum(DEPARTMENTS),
     role: z.enum(["admin", "employee"]),
     createdAt: z.string(),
     updatedAt: z.string(),

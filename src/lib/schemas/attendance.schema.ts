@@ -1,4 +1,5 @@
 import z from "zod";
+import { DEPARTMENTS } from "./user.schema";
 
 export const MarkAttendanceRequestSchema = z.object({
   userId: z.string(),
@@ -35,7 +36,7 @@ export const GetAttendancesResponseSchema = z.object({
           fullName: z.string(),
           email: z.string().email(),
           employeeId: z.string(),
-          department: z.enum(["HR", "Engineering", "Sales", "Marketing"]),
+          department: z.enum(DEPARTMENTS),
         }),
       }),
     ),
@@ -62,7 +63,7 @@ export const GetUserAttendancesResponseSchema = z.object({
           fullName: z.string(),
           email: z.string().email(),
           employeeId: z.string(),
-          department: z.enum(["HR", "Engineering", "Sales", "Marketing"]),
+          department: z.enum(DEPARTMENTS),
         }),
         date: z.string(),
         status: z.enum(["present", "absent"]),
