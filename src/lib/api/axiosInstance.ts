@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BaseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+export const BaseURL = "https://hrms-server-eight.vercel.app";
 
 export const axiosInstance = axios.create({
   baseURL: BaseURL,
