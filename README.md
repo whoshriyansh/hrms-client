@@ -103,6 +103,7 @@ The project follows industry best practices including:
 **Check out the live deployment:**
 
 [Live Link](https://hrms-seven-murex.vercel.app/)
+[Backend Link](https://hrms-server-eight.vercel.app/)
 
 ## 🔗 Links
 
